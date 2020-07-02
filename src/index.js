@@ -1,14 +1,31 @@
 import React from "react";
 import ReactDOM from 'react-dom';
 
-const el = (
-    <>
-        <h1>Список дел</h1>
-        <input type="text" placeholder='Поиск'/>
+const ToDoList = () => {
+    return (
         <ul>
             <li>Изучение React</li>
             <li>Создание приложения</li>
         </ul>
-    </>
-);
-ReactDOM.render(el, document.getElementById('root'));
+    )
+};
+
+const AppHeader = () => {
+    return <h1>Список дел</h1>
+};
+
+const SearchPanel = () => {
+  return <input type="text" placeholder='Поиск'/>
+};
+
+const App = () => {
+    return (
+        <>
+            <AppHeader />
+            <SearchPanel />
+            <ToDoList />
+        </>
+    )
+};
+
+ReactDOM.render(<App />, document.getElementById('root'));
