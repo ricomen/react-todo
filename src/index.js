@@ -10,14 +10,17 @@ const App = () => {
         {
             label: 'DrinkCofeee',
             important: false,
+            id: 1
         },
         {
             label: 'Make Awesome App',
             important: true,
+            id: 2
         },
         {
             label: 'Drink Teal',
-            impotant: false
+            impotant: false,
+            id: 3
         },
     ];
     return (

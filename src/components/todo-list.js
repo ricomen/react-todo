@@ -6,8 +6,9 @@ const ToDoList = ({ todos }) => {
     return (
         <ul>
             { todos.map((item) => {
+                const { id, ...itemProps } = item
                 return (
-                    <li><ToDoListItem {...item} /></li>
+                    <li key={id}><ToDoListItem {...itemProps} /></li>
                 );
             }) }
         </ul>
