@@ -1,22 +1,9 @@
 import React from "react";
 import ReactDOM from 'react-dom';
 
-const ToDoList = () => {
-    return (
-        <ul>
-            <li>Изучение React</li>
-            <li>Создание приложения</li>
-        </ul>
-    )
-};
-
-const AppHeader = () => {
-    return <h1>Список дел</h1>
-};
-
-const SearchPanel = () => {
-  return <input type="text" placeholder='Поиск'/>
-};
+import AppHeader from './components/app-header';
+import SearchPanel from './components/search-panel';
+import ToDoList from "./components/todo-list";
 
 const App = () => {
     return (
