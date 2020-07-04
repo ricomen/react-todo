@@ -2,13 +2,22 @@ import React, { Component } from "react";
 import './todo-list-item.css';
 
 export default class ToDoListItem extends Component {
+
+    onLabelClick = () => {
+        console.log(this.props.label);
+    };
+
     render() {
         const { label, important = false } = this.props;
         return (
-            <div>
-                { important && (<b>{label}</b>) }
-    
-                { !important && (<span>{label}</span>) }
+            <>
+                <span className='todo-list-item'>
+                    <span
+                        className='todo-list-item-label'
+                        onClick={this.onLabelClick}>
+                        {label}
+                    </span>
+                </span>
                 <button 
                     type='button'
                     className='btn btn-outline-success btn-sm float-right'>
@@ -19,7 +28,7 @@ export default class ToDoListItem extends Component {
                     className='btn btn-outline-danger btn-sm float-right'>
                         <i className='fa fa-trash-o'></i>
                 </button>
-            </div>
+            </>
         )
     }
 };
