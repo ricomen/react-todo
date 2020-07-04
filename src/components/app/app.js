@@ -30,7 +30,7 @@ const App = () => {
                 <SearchPanel />
                 <ItemStatusFilter />
             </div>
-            <ToDoList todos={todoData} />s
+            <ToDoList todos={todoData} />
         </div>
     )
 };
