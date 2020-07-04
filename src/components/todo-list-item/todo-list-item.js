@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import './todo-list-item.css';
-import { findRenderedDOMComponentWithClass } from "react-dom/test-utils";
 
 export default class ToDoListItem extends Component {
     constructor() {
@@ -11,15 +10,20 @@ export default class ToDoListItem extends Component {
         }
     }
 
+
     onLabelClick = () => {
-        this.setState({
-            done: !this.state.done
-        })
+        this.setState(({done}) => {
+            return {
+                done: !done
+            };
+        });
     };
 
     onMarkImportant = () => {
-        this.setState({
-            important: !this.state.important
+        this.setState(({important}) => {
+            return {
+                important: !important
+            };
         });
     }
 
