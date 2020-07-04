@@ -10,13 +10,13 @@ const ToDoListItem = ({ label, important = false }) => {
             { !important && (<span>{label}</span>) }
             <button 
                 type='button'
-                className='btn btn-outline-success'>
-                    <i className='fa fa-exclamation btn-sm'></i>
+                className='btn btn-outline-success btn-sm float-right'>
+                    <i className='fa fa-exclamation'></i>
             </button>
             <button 
                 type='button'
-                className='btn btn-outline-danger'>
-                    <i className='fa fa-trash-o btn-sm'></i>
+                className='btn btn-outline-danger btn-sm float-right'>
+                    <i className='fa fa-trash-o'></i>
             </button>
         </>
     )
