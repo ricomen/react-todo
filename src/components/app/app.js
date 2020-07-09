@@ -19,6 +19,7 @@ export default class App extends Component {
             this.createToDoItem('Тросик ручного тормоза'),
         ],
         term: '',
+        filter: 'all',
     };
 
     createToDoItem(label) {
@@ -93,14 +94,31 @@ export default class App extends Component {
         });
     }
 
+    filter (items, filter) {
+        switch (filter) {
+            case 'all':
+                return items;
+            case 'active':
+                return items.filter((item) => !item.done);
+            case 'done':
+                return items.filter((item) => item.active);
+            default:
+                return items;
+        };
+    };
+
     onSearchChange = (term) => {
         this.setState({ term });
-    }
+    };
+
+    onFilterChange = (filter) => {
+        this.setState({ filter });
+    };
 
     render() {
-        const { todoData, term } = this.state;
+        const { todoData, term, filter } = this.state;
 
-        const visibleItems = this.search(todoData, term);
+        const visibleItems = this.filter(this.search(todoData, term), filter);
         const doneCount = todoData.filter((el) => el.done).length;
         const todoCount = todoData.length - doneCount;
         return (
@@ -111,8 +129,10 @@ export default class App extends Component {
 
                 <div className="search-panel d-flex">
                     <SearchPanel
-                        onSearchChange={this.onSearchChange}/>
-                    <ItemStatusFilter />
+                        onSearchChange={this.onSearchChange }/>
+                    <ItemStatusFilter
+                        filter={filter}
+                        onFilterChange={ this.onFilterChange }/>
                 </div>
 
                 <ToDoList
