@@ -17,7 +17,8 @@ export default class App extends Component {
             this.createToDoItem('Купить плюшек'),
             this.createToDoItem('Заменить ступичный подшипник'),
             this.createToDoItem('Тросик ручного тормоза'),
-        ]
+        ],
+        term: '',
     };
 
     createToDoItem(label) {
@@ -81,8 +82,25 @@ export default class App extends Component {
         });
     };
 
+    search(items, term) {
+
+        if (term.length === 0) {
+            return items;
+        };
+
+        return items.filter((item) => {
+            return item.label.indexOf(term) > -1;
+        });
+    }
+
+    onSearchChange = (term) => {
+        this.setState({ term });
+    }
+
     render() {
-        const { todoData } = this.state;
+        const { todoData, term } = this.state;
+
+        const visibleItems = this.search(todoData, term);
         const doneCount = todoData.filter((el) => el.done).length;
         const todoCount = todoData.length - doneCount;
         return (
@@ -92,12 +110,13 @@ export default class App extends Component {
                     done={doneCount} />
 
                 <div className="search-panel d-flex">
-                    <SearchPanel />
+                    <SearchPanel
+                        onSearchChange={this.onSearchChange}/>
                     <ItemStatusFilter />
                 </div>
 
                 <ToDoList
-                    todos={todoData}
+                    todos={visibleItems}
                     onDeleted={this.deleteItem}
                     onToggleImportant={this.onToggleImportant}
                     onToggleDone={this.onToggleDone}
